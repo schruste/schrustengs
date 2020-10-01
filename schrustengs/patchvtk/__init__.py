@@ -3,10 +3,10 @@ import os
 
 def VTKOutputToVTU():
   def convert_vtk_to_vtu(basename):
-      # m = meshio.vtk.read(basename+".vtk")
-      # meshio.vtk.write(basename+".vtu",m)
-      os.system("meshio-convert "+basename+".vtk "+basename+".vtu")
-      os.system("meshio-compress "+basename+".vtu > /dev/null")
+      m = meshio.read(basename+".vtk")
+      meshio.write(basename+".vtu",m)
+      # os.system("meshio-convert "+basename+".vtk "+basename+".vtu")
+      # os.system("meshio-compress "+basename+".vtu > /dev/null")
       os.remove(basename+".vtk")
   
   
