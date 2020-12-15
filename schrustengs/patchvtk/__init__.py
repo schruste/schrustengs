@@ -3,11 +3,14 @@ import os
 
 def VTKOutputToVTU():
   def convert_vtk_to_vtu(basename):
+    try:
       m = meshio.read(basename+".vtk")
       meshio.write(basename+".vtu",m)
       # os.system("meshio-convert "+basename+".vtk "+basename+".vtu")
       # os.system("meshio-compress "+basename+".vtu > /dev/null")
       os.remove(basename+".vtk")
+    except:
+      pass
   
   
   from ngsolve import VTKOutput
